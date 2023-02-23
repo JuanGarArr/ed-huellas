@@ -2,7 +2,7 @@ package com.iesam.huellas.data.local;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.iesam.huellas.domain.Cat;
+import com.iesam.huellas.domain.Models.Cat;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CatFileLocalDataSource {
+public class CatFileLocalDataSource implements CatLocalDataSource{
 
     private static CatFileLocalDataSource instance = null;
 
@@ -34,6 +34,11 @@ public class CatFileLocalDataSource {
         saveToFile(cats);
     }
 
+    @Override
+    public Cat findById(Integer idCat) {
+        return null;
+    }
+
     public void saveList(List<Cat> cats) {
         saveToFile(cats);
     }
@@ -48,17 +53,6 @@ public class CatFileLocalDataSource {
             System.out.println("Ha ocurrido un error al guardar la información.");
             e.printStackTrace();
         }
-    }
-
-
-    public Cat findById(Integer catId) {
-        List<Cat> cats = findAll();
-        for (Cat cat : cats) {
-            if (Objects.equals(cat.getId(), catId)) {
-                return cat;
-            }
-        }
-        return null;
     }
 
     public List<Cat> findAll() {
@@ -76,6 +70,11 @@ public class CatFileLocalDataSource {
             e.printStackTrace();
         }
         return new ArrayList<Cat>();
+    }
+
+    @Override
+    public void delete(Integer idCat) {
+
     }
 
     public static CatFileLocalDataSource getInstance() {
