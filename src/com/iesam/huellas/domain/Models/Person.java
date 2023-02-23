@@ -6,9 +6,6 @@ public class Person {
     private String name;
     private String surnames;
     private Integer dni;
-    private String birthDate;
-    private String direction;
-
 
     public Integer getId() {
         return id;
@@ -42,19 +39,4 @@ public class Person {
         this.dni = dni;
     }
 
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getDirection() {
-        return direction;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
 }
